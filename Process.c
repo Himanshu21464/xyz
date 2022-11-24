@@ -10,7 +10,7 @@ pid_t pid1,pid2,pid3,pid4,pid5,pid6,pid7,pid8,pid9,pid10,pid11,pid12;
 int status;
 struct sched_param param;
 
-double PROCESS_A(){
+float PROCESS_A(){
   clock_t Start;
   Start=clock();
   pid1=fork();
@@ -22,11 +22,11 @@ double PROCESS_A(){
     execlp("make","make",NULL);
   }waitpid(pid1,&status,0);
   Start=clock()-Start;
-  double total_time=(double)Start;
+  float total_time=(float)Start;
   return total_time;
 }
 
-double PROCESS_A_P1(){
+float PROCESS_A_P1(){
   clock_t Start;
   Start=clock();
   pid2=fork();
@@ -39,11 +39,11 @@ double PROCESS_A_P1(){
     execlp("make","make",NULL);
   }waitpid(pid2,&status,0);
   Start=clock()-Start;
-  double total_time=(double)Start;
+  float total_time=(float)Start;
   return total_time;
 }
 
-double PROCESS_A_P2(){
+float PROCESS_A_P2(){
   clock_t Start;
   Start=clock();
   pid3=fork();
@@ -56,11 +56,11 @@ double PROCESS_A_P2(){
     execlp("make","make",NULL);
   }waitpid(pid3,&status,0);
   Start=clock()-Start;
-  double total_time=(double)Start;
+  float total_time=(float)Start;
   return total_time;
 }
 
-double PROCESS_A_P3(){
+float PROCESS_A_P3(){
   clock_t Start;
   Start=clock();
   pid4=fork();
@@ -73,11 +73,11 @@ double PROCESS_A_P3(){
     execlp("make","make",NULL);
   }waitpid(pid4,&status,0);
   Start=clock()-Start;
-  double total_time=(double)Start;
+  float total_time=(float)Start;
   return total_time;
 }
 
-double PROCESS_B(){
+float PROCESS_B(){
   clock_t Start;
   Start=clock();
   pid5=fork();
@@ -89,11 +89,11 @@ double PROCESS_B(){
     execlp("make","make",NULL);
   }waitpid(pid5,&status,0);
   Start=clock()-Start;
-  double total_time=(double)Start;
+  float total_time=(float)Start;
   return total_time;
 }
 
-double PROCESS_B_P1(){
+float PROCESS_B_P1(){
   clock_t Start;
   Start=clock();
   pid6=fork();
@@ -106,11 +106,11 @@ double PROCESS_B_P1(){
     execlp("make","make",NULL);
   }waitpid(pid6,&status,0);
   Start=clock()-Start;
-  double total_time=(double)Start;
+  float total_time=(float)Start;
   return total_time;
 }
 
-double PROCESS_B_P2(){
+float PROCESS_B_P2(){
   clock_t Start;
   Start=clock();
   pid7=fork();
@@ -123,11 +123,11 @@ double PROCESS_B_P2(){
     execlp("make","make",NULL);
   }waitpid(pid7,&status,0);
   Start=clock()-Start;
-  double total_time=(double)Start;
+  float total_time=(float)Start;
   return total_time;
 }
 
-double PROCESS_B_P3(){
+float PROCESS_B_P3(){
   clock_t Start;
   Start=clock();
   pid8=fork();
@@ -140,12 +140,12 @@ double PROCESS_B_P3(){
     execlp("make","make",NULL);
   }waitpid(pid8,&status,0);
   Start=clock()-Start;
-  double total_time=(double)Start;
+  float total_time=(float)Start;
   return total_time;
 }
 
 
-double PROCESS_C(){
+float PROCESS_C(){
   clock_t Start;
   Start=clock();
   pid9=fork();
@@ -157,11 +157,11 @@ double PROCESS_C(){
     execlp("make","make",NULL);
   }waitpid(pid9,&status,0);
   Start=clock()-Start;
-  double total_time=(double)Start;
+  float total_time=(float)Start;
   return total_time;
 }
 
-double PROCESS_C_P1(){
+float PROCESS_C_P1(){
   clock_t Start;
   Start=clock();
   pid10=fork();
@@ -174,11 +174,11 @@ double PROCESS_C_P1(){
     execlp("make","make",NULL);
   }waitpid(pid10,&status,0);
   Start=clock()-Start;
-  double total_time=(double)Start;
+  float total_time=(float)Start;
   return total_time;
 }
 
-double PROCESS_C_P2(){
+float PROCESS_C_P2(){
   clock_t Start;
   Start=clock();
   pid11=fork();
@@ -191,11 +191,11 @@ double PROCESS_C_P2(){
     execlp("make","make",NULL);
   }waitpid(pid11,&status,0);
   Start=clock()-Start;
-  double total_time=(double)Start;
+  float total_time=(float)Start;
   return total_time;
 }
 
-double PROCESS_C_P3(){
+float PROCESS_C_P3(){
   clock_t Start;
   Start=clock();
   pid12=fork();
@@ -208,25 +208,25 @@ double PROCESS_C_P3(){
     execlp("make","make",NULL);
   }waitpid(pid12,&status,0);
   Start=clock()-Start;
-  double total_time=(double)Start;
+  float total_time=(float)Start;
   return total_time;
 }
 
 
 
 int main(){
-  double T1=PROCESS_A();
-  double T2=PROCESS_A_P1();
-  double T3=PROCESS_A_P2();
-  double T4=PROCESS_A_P3();
-  double T5=PROCESS_B();
-  double T6=PROCESS_B_P1();
-  double T7=PROCESS_B_P2();
-  double T8=PROCESS_B_P3();
-  double T9=PROCESS_C();
-  double T10=PROCESS_C_P1();
-  double T11=PROCESS_C_P2();
-  double T12=PROCESS_C_P3();
+  float T1=PROCESS_A();
+  float T2=PROCESS_A_P1();
+  float T3=PROCESS_A_P2();
+  float T4=PROCESS_A_P3();
+  float T5=PROCESS_B();
+  float T6=PROCESS_B_P1();
+  float T7=PROCESS_B_P2();
+  float T8=PROCESS_B_P3();
+  float T9=PROCESS_C();
+  float T10=PROCESS_C_P1();
+  float T11=PROCESS_C_P2();
+  float T12=PROCESS_C_P3();
   
   printf("\n\nfirst_process default time:");
   for(int i=0;i<T1;i++){
