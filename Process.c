@@ -1,0 +1,303 @@
+#include<stdio.h>
+#include<unistd.h>
+#include<time.h>
+#include<sys/wait.h>
+#include<sys/types.h>
+#include<sys/stat.h>
+#include<sched.h>
+
+pid_t pid1,pid2,pid3,pid4,pid5,pid6,pid7,pid8,pid9,pid10,pid11,pid12;
+int status;
+struct sched_param param;
+
+double PROCESS_A(){
+  clock_t Start;
+  Start=clock();
+  pid1=fork();
+  if(pid1==-1){
+    printf("Unable to create Child Process\n");
+  }
+  else if(pid1==0){
+    sched_setscheduler(pid1, SCHED_OTHER,&param);
+    execlp("make","make",NULL);
+  }waitpid(pid1,&status,0);
+  Start=clock()-Start;
+  double total_time=(double)Start;
+  return total_time;
+}
+
+double PROCESS_A_P1(){
+  clock_t Start;
+  Start=clock();
+  pid2=fork();
+  if(pid2==-1){
+    printf("Unable to create Child Process\n");
+  }
+  else if(pid2==0){
+    param.sched_priority=1;
+    sched_setscheduler(pid2, SCHED_OTHER,&param);
+    execlp("make","make",NULL);
+  }waitpid(pid2,&status,0);
+  Start=clock()-Start;
+  double total_time=(double)Start;
+  return total_time;
+}
+
+double PROCESS_A_P2(){
+  clock_t Start;
+  Start=clock();
+  pid3=fork();
+  if(pid3==-1){
+    printf("Unable to create Child Process\n");
+  }
+  else if(pid3==0){
+    param.sched_priority=2;
+    sched_setscheduler(pid3, SCHED_OTHER,&param);
+    execlp("make","make",NULL);
+  }waitpid(pid3,&status,0);
+  Start=clock()-Start;
+  double total_time=(double)Start;
+  return total_time;
+}
+
+double PROCESS_A_P3(){
+  clock_t Start;
+  Start=clock();
+  pid4=fork();
+  if(pid4==-1){
+    printf("Unable to create Child Process\n");
+  }
+  else if(pid4==0){
+    param.sched_priority=3;
+    sched_setscheduler(pid4, SCHED_OTHER,&param);
+    execlp("make","make",NULL);
+  }waitpid(pid4,&status,0);
+  Start=clock()-Start;
+  double total_time=(double)Start;
+  return total_time;
+}
+
+double PROCESS_B(){
+  clock_t Start;
+  Start=clock();
+  pid5=fork();
+  if(pid5==-1){
+    printf("Unable to create Child Process\n");
+  }
+  else if(pid5==0){
+    sched_setscheduler(pid5, SCHED_RR,&param);
+    execlp("make","make",NULL);
+  }waitpid(pid5,&status,0);
+  Start=clock()-Start;
+  double total_time=(double)Start;
+  return total_time;
+}
+
+double PROCESS_B_P1(){
+  clock_t Start;
+  Start=clock();
+  pid6=fork();
+  if(pid6==-1){
+    printf("Unable to create Child Process\n");
+  }
+  else if(pid6==0){
+    param.sched_priority=1;
+    sched_setscheduler(pid6, SCHED_RR,&param);
+    execlp("make","make",NULL);
+  }waitpid(pid6,&status,0);
+  Start=clock()-Start;
+  double total_time=(double)Start;
+  return total_time;
+}
+
+double PROCESS_B_P2(){
+  clock_t Start;
+  Start=clock();
+  pid7=fork();
+  if(pid7==-1){
+    printf("Unable to create Child Process\n");
+  }
+  else if(pid7==0){
+    param.sched_priority=2;
+    sched_setscheduler(pid7, SCHED_RR,&param);
+    execlp("make","make",NULL);
+  }waitpid(pid7,&status,0);
+  Start=clock()-Start;
+  double total_time=(double)Start;
+  return total_time;
+}
+
+double PROCESS_B_P3(){
+  clock_t Start;
+  Start=clock();
+  pid8=fork();
+  if(pid8==-1){
+    printf("Unable to create Child Process\n");
+  }
+  else if(pid8==0){
+    param.sched_priority=3;
+    sched_setscheduler(pid8, SCHED_RR,&param);
+    execlp("make","make",NULL);
+  }waitpid(pid8,&status,0);
+  Start=clock()-Start;
+  double total_time=(double)Start;
+  return total_time;
+}
+
+
+double PROCESS_C(){
+  clock_t Start;
+  Start=clock();
+  pid9=fork();
+  if(pid9==-1){
+    printf("Unable to create Child Process\n");
+  }
+  else if(pid9==0){
+    sched_setscheduler(pid9, SCHED_FIFO,&param);
+    execlp("make","make",NULL);
+  }waitpid(pid9,&status,0);
+  Start=clock()-Start;
+  double total_time=(double)Start;
+  return total_time;
+}
+
+double PROCESS_C_P1(){
+  clock_t Start;
+  Start=clock();
+  pid10=fork();
+  if(pid10==-1){
+    printf("Unable to create Child Process\n");
+  }
+  else if(pid10==0){
+    param.sched_priority=1;
+    sched_setscheduler(pid10, SCHED_FIFO,&param);
+    execlp("make","make",NULL);
+  }waitpid(pid10,&status,0);
+  Start=clock()-Start;
+  double total_time=(double)Start;
+  return total_time;
+}
+
+double PROCESS_C_P2(){
+  clock_t Start;
+  Start=clock();
+  pid11=fork();
+  if(pid11==-1){
+    printf("Unable to create Child Process\n");
+  }
+  else if(pid11==0){
+    param.sched_priority=2;
+    sched_setscheduler(pid11, SCHED_FIFO,&param);
+    execlp("make","make",NULL);
+  }waitpid(pid11,&status,0);
+  Start=clock()-Start;
+  double total_time=(double)Start;
+  return total_time;
+}
+
+double PROCESS_C_P3(){
+  clock_t Start;
+  Start=clock();
+  pid12=fork();
+  if(pid12==-1){
+    printf("Unable to create Child Process\n");
+  }
+  else if(pid12==0){
+    param.sched_priority=3;
+    sched_setscheduler(pid12, SCHED_FIFO,&param);
+    execlp("make","make",NULL);
+  }waitpid(pid12,&status,0);
+  Start=clock()-Start;
+  double total_time=(double)Start;
+  return total_time;
+}
+
+
+
+int main(){
+  double T1=PROCESS_A();
+  double T2=PROCESS_A_P1();
+  double T3=PROCESS_A_P2();
+  double T4=PROCESS_A_P3();
+  double T5=PROCESS_B();
+  double T6=PROCESS_B_P1();
+  double T7=PROCESS_B_P2();
+  double T8=PROCESS_B_P3();
+  double T9=PROCESS_C();
+  double T10=PROCESS_C_P1();
+  double T11=PROCESS_C_P2();
+  double T12=PROCESS_C_P3();
+  
+  printf("\n\nfirst_process default time:");
+  for(int i=0;i<T1;i++){
+    printf("*");
+  }
+  printf(" %f\n",T1);
+
+  printf("first_process priority1 time:");
+  for(int i=0;i<T2;i++){
+    printf("*");
+  }
+  printf(" %f\n",T2);
+
+  printf("first_process priority2 time:");
+  for(int i=0;i<T3;i++){
+    printf("*");
+  }
+  printf(" %f\n",T3);
+
+  printf("first_process priority3 time:");
+  for(int i=0;i<T4;i++){
+    printf("*");
+  }
+  printf(" %f\n",T4);
+
+  printf("second_process default time:");
+  for(int i=0;i<T5;i++){
+    printf("*");
+  }
+  printf(" %f\n",T5);
+
+  printf("second_process priority1 time:");
+  for(int i=0;i<T6;i++){
+    printf("*");
+  }
+  printf(" %f\n",T6);
+
+  printf("second_process priority2 time:");
+  for(int i=0;i<T7;i++){
+    printf("*");
+  }
+  printf(" %f\n",T7);
+
+  printf("second_process priority3 time:");
+  for(int i=0;i<T8;i++){
+    printf("*");
+  }
+  printf(" %f\n",T8);
+  
+  printf("third_process default time:");
+  for(int i=0;i<T9;i++){
+    printf("*");
+  }
+  printf(" %f\n",T9);
+
+  printf("third_process priority1 time:");
+  for(int i=0;i<T10;i++){
+    printf("*");
+  }
+  printf(" %f\n",T10);
+
+  printf("third_process priority2 time:");
+  for(int i=0;i<T11;i++){
+    printf("*");
+  }
+  printf(" %f\n",T11);
+
+  printf("third_process priority3 time:");
+  for(int i=0;i<T12;i++){
+    printf("*");
+  }
+  printf(" %f\n",T12);
+  return 0;
+}
