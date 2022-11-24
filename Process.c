@@ -217,6 +217,7 @@ int main(){
   float T1=PROCESS_A();
   float T2=PROCESS_A_P1();
   float T3=PROCESS_A_P2();
+  float T4=PROCESS_A_P3();
   float T5=PROCESS_B();
   float T6=PROCESS_B_P1();
   float T7=PROCESS_B_P2();
@@ -287,7 +288,6 @@ int main(){
 
 //////////////////////////////////////////////////////////////////////
 
-  float T4=PROCESS_A_P3();
   printf("PROCESS-A PRIORITY-3:");
   for(int i=0;i<T4;i++){
     printf("#");
