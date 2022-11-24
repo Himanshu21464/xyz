@@ -11,7 +11,7 @@ pid_t pid1,pid2,pid3,pid4,pid5,pid6,pid7,pid8,pid9,pid10,pid11,pid12;
 struct sched_param param;
 
 float PROCESS_A(){
-  clock_t Start;
+  clock_t Start,End;
   Start=clock();
   pid1=fork();
   if(pid1==-1){
@@ -21,13 +21,13 @@ float PROCESS_A(){
     sched_setscheduler(pid1, SCHED_OTHER,&param);
     execlp("make","make",NULL);
   }waitpid(pid1,&status,0);
-  Start=clock()-Start;
-  float total_time=(float)Start;
+  End=clock();
+  float total_time=(float)(End-Start);
   return total_time;
 }
 
 float PROCESS_A_P1(){
-  clock_t Start;
+  clock_t Start,End;
   Start=clock();
   pid2=fork();
   if(pid2==-1){
@@ -38,13 +38,13 @@ float PROCESS_A_P1(){
     sched_setscheduler(pid2, SCHED_OTHER,&param);
     execlp("make","make",NULL);
   }waitpid(pid2,&status,0);
-  Start=clock()-Start;
-  float total_time=(float)Start;
+  End=clock();
+  float total_time=(float)(End-Start);
   return total_time;
 }
 
 float PROCESS_A_P2(){
-  clock_t Start;
+  clock_t Start,End;
   Start=clock();
   pid3=fork();
   if(pid3==-1){
@@ -55,13 +55,13 @@ float PROCESS_A_P2(){
     sched_setscheduler(pid3, SCHED_OTHER,&param);
     execlp("make","make",NULL);
   }waitpid(pid3,&status,0);
-  Start=clock()-Start;
-  float total_time=(float)Start;
+  End=clock();
+  float total_time=(float)(End-Start);
   return total_time;
 }
 
 float PROCESS_A_P3(){
-  clock_t Start;
+  clock_t Start,End;
   Start=clock();
   pid4=fork();
   if(pid4==-1){
@@ -72,13 +72,13 @@ float PROCESS_A_P3(){
     sched_setscheduler(pid4, SCHED_OTHER,&param);
     execlp("make","make",NULL);
   }waitpid(pid4,&status,0);
-  Start=clock()-Start;
-  float total_time=(float)Start;
+  End=clock();
+  float total_time=(float)(End-Start);
   return total_time;
 }
 
 float PROCESS_B(){
-  clock_t Start;
+  clock_t Start,End;
   Start=clock();
   pid5=fork();
   if(pid5==-1){
@@ -88,13 +88,13 @@ float PROCESS_B(){
     sched_setscheduler(pid5, SCHED_RR,&param);
     execlp("make","make",NULL);
   }waitpid(pid5,&status,0);
-  Start=clock()-Start;
-  float total_time=(float)Start;
+  End=clock();
+  float total_time=(float)(End-Start);
   return total_time;
 }
 
 float PROCESS_B_P1(){
-  clock_t Start;
+  clock_t Start,End;
   Start=clock();
   pid6=fork();
   if(pid6==-1){
@@ -105,13 +105,13 @@ float PROCESS_B_P1(){
     sched_setscheduler(pid6, SCHED_RR,&param);
     execlp("make","make",NULL);
   }waitpid(pid6,&status,0);
-  Start=clock()-Start;
-  float total_time=(float)Start;
+  End=clock();
+  float total_time=(float)(End-Start);
   return total_time;
 }
 
 float PROCESS_B_P2(){
-  clock_t Start;
+  clock_t Start,End;
   Start=clock();
   pid7=fork();
   if(pid7==-1){
@@ -122,13 +122,13 @@ float PROCESS_B_P2(){
     sched_setscheduler(pid7, SCHED_RR,&param);
     execlp("make","make",NULL);
   }waitpid(pid7,&status,0);
-  Start=clock()-Start;
-  float total_time=(float)Start;
+  End=clock();
+  float total_time=(float)(End-Start);
   return total_time;
 }
 
 float PROCESS_B_P3(){
-  clock_t Start;
+  clock_t Start,End;
   Start=clock();
   pid8=fork();
   if(pid8==-1){
@@ -139,14 +139,14 @@ float PROCESS_B_P3(){
     sched_setscheduler(pid8, SCHED_RR,&param);
     execlp("make","make",NULL);
   }waitpid(pid8,&status,0);
-  Start=clock()-Start;
-  float total_time=(float)Start;
+  End=clock();
+  float total_time=(float)(End-Start);
   return total_time;
 }
 
 
 float PROCESS_C(){
-  clock_t Start;
+  clock_t Start,End;
   Start=clock();
   pid9=fork();
   if(pid9==-1){
@@ -156,13 +156,13 @@ float PROCESS_C(){
     sched_setscheduler(pid9, SCHED_FIFO,&param);
     execlp("make","make",NULL);
   }waitpid(pid9,&status,0);
-  Start=clock()-Start;
-  float total_time=(float)Start;
+  End=clock();
+  float total_time=(float)(End-Start);
   return total_time;
 }
 
 float PROCESS_C_P1(){
-  clock_t Start;
+  clock_t Start,End;
   Start=clock();
   pid10=fork();
   if(pid10==-1){
@@ -173,13 +173,13 @@ float PROCESS_C_P1(){
     sched_setscheduler(pid10, SCHED_FIFO,&param);
     execlp("make","make",NULL);
   }waitpid(pid10,&status,0);
-  Start=clock()-Start;
-  float total_time=(float)Start;
+  End=clock();
+  float total_time=(float)(End-Start);
   return total_time;
 }
 
 float PROCESS_C_P2(){
-  clock_t Start;
+  clock_t Start,End;
   Start=clock();
   pid11=fork();
   if(pid11==-1){
@@ -190,13 +190,13 @@ float PROCESS_C_P2(){
     sched_setscheduler(pid11, SCHED_FIFO,&param);
     execlp("make","make",NULL);
   }waitpid(pid11,&status,0);
-  Start=clock()-Start;
-  float total_time=(float)Start;
+  End=clock();
+  float total_time=(float)(End-Start);
   return total_time;
 }
 
 float PROCESS_C_P3(){
-  clock_t Start;
+  clock_t Start,End;
   Start=clock();
   pid12=fork();
   if(pid12==-1){
@@ -207,8 +207,8 @@ float PROCESS_C_P3(){
     sched_setscheduler(pid12, SCHED_FIFO,&param);
     execlp("make","make",NULL);
   }waitpid(pid12,&status,0);
-  Start=clock()-Start;
-  float total_time=(float)Start;
+  End=clock();
+  float total_time=(float)(End-Start);
   return total_time;
 }
 
