@@ -1,13 +1,13 @@
 #include<stdio.h>
+#include<sys/stat.h>
+#include<sys/types.h>
+#include<sys/wait.h>
+#include<sched.h>
 #include<unistd.h>
 #include<time.h>
-#include<sys/wait.h>
-#include<sys/types.h>
-#include<sys/stat.h>
-#include<sched.h>
 
-pid_t pid1,pid2,pid3,pid4,pid5,pid6,pid7,pid8,pid9,pid10,pid11,pid12;
 int status;
+pid_t pid1,pid2,pid3,pid4,pid5,pid6,pid7,pid8,pid9,pid10,pid11,pid12;
 struct sched_param param;
 
 float PROCESS_A(){
@@ -228,76 +228,84 @@ int main(){
   float T11=PROCESS_C_P2();
   float T12=PROCESS_C_P3();
   
-  printf("\n\nfirst_process default time:");
+
+  ////////////////////////////////////////////////////////////////////
+  printf("\n\nPROCESS-A DEFAULT:");
   for(int i=0;i<T1;i++){
-    printf("*");
+    printf("#");
   }
   printf(" %f\n",T1);
 
-  printf("first_process priority1 time:");
-  for(int i=0;i<T2;i++){
-    printf("*");
-  }
-  printf(" %f\n",T2);
-
-  printf("first_process priority2 time:");
-  for(int i=0;i<T3;i++){
-    printf("*");
-  }
-  printf(" %f\n",T3);
-
-  printf("first_process priority3 time:");
-  for(int i=0;i<T4;i++){
-    printf("*");
-  }
-  printf(" %f\n",T4);
-
-  printf("second_process default time:");
+  printf("PROCESS-B DEFAULT:");
   for(int i=0;i<T5;i++){
-    printf("*");
+    printf("#");
   }
   printf(" %f\n",T5);
 
-  printf("second_process priority1 time:");
+  printf("PROCESS-C DEFAULT:");
+  for(int i=0;i<T9;i++){
+    printf("#");
+  }
+  printf(" %f\n",T9);
+  //////////////////////////////////////////////////////////////////////
+
+  printf("PROCESS-A PRIORITY-1:");
+  for(int i=0;i<T2;i++){
+    printf("#");
+  }
+  printf(" %f\n",T2);
+
+  printf("PROCESS-B PRIORITY-1:");
   for(int i=0;i<T6;i++){
-    printf("*");
+    printf("#");
   }
   printf(" %f\n",T6);
 
-  printf("second_process priority2 time:");
-  for(int i=0;i<T7;i++){
-    printf("*");
-  }
-  printf(" %f\n",T7);
-
-  printf("second_process priority3 time:");
-  for(int i=0;i<T8;i++){
-    printf("*");
-  }
-  printf(" %f\n",T8);
-  
-  printf("third_process default time:");
-  for(int i=0;i<T9;i++){
-    printf("*");
-  }
-  printf(" %f\n",T9);
-
-  printf("third_process priority1 time:");
+  printf("PROCESS-C PRIORITY-1:");
   for(int i=0;i<T10;i++){
-    printf("*");
+    printf("#");
   }
   printf(" %f\n",T10);
 
-  printf("third_process priority2 time:");
+/////////////////////////////////////////////////////////////////////
+  printf("PROCESS-A PRIORITY-2:");
+  for(int i=0;i<T3;i++){
+    printf("#");
+  }
+  printf(" %f\n",T3);
+
+  printf("PROCESS-B PRIORITY-2:");
+  for(int i=0;i<T7;i++){
+    printf("#");
+  }
+  printf(" %f\n",T7);
+
+
+  printf("PROCESS-C PRIORITY-2:");
   for(int i=0;i<T11;i++){
-    printf("*");
+    printf("#");
   }
   printf(" %f\n",T11);
 
-  printf("third_process priority3 time:");
+
+//////////////////////////////////////////////////////////////////////
+  printf("PROCESS-A PRIORITY-3:");
+  for(int i=0;i<T4;i++){
+    printf("#");
+  }
+  printf(" %f\n",T4);
+
+  printf("PROCESS-B PRIORITY-3:");
+  for(int i=0;i<T8;i++){
+    printf("#");
+  }
+  printf(" %f\n",T8);
+  
+  printf("PROCESS-C PRIORITY-3:");
   for(int i=0;i<T12;i++){
-    printf("*");
+    printf("#");
   }
   printf(" %f\n",T12);
+  //////////////////////////////////////////////////////////////////////
   return 0;
 }
