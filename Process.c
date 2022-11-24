@@ -26,6 +26,38 @@ float PROCESS_A(){
   return total_time;
 }
 
+float PROCESS_B(){
+  clock_t Start,End;
+  Start=clock();
+  pid5=fork();
+  if(pid5==-1){
+    printf("Unable to create Child Process\n");
+  }
+  else if(pid5==0){
+    sched_setscheduler(pid5, SCHED_RR,&param);
+    execlp("make","make",NULL);
+  }waitpid(pid5,&status,0);
+  End=clock();
+  float total_time=(float)(End-Start);
+  return total_time;
+}
+
+float PROCESS_C(){
+  clock_t Start,End;
+  Start=clock();
+  pid9=fork();
+  if(pid9==-1){
+    printf("Unable to create Child Process\n");
+  }
+  else if(pid9==0){
+    sched_setscheduler(pid9, SCHED_FIFO,&param);
+    execlp("make","make",NULL);
+  }waitpid(pid9,&status,0);
+  End=clock();
+  float total_time=(float)(End-Start);
+  return total_time;
+}
+
 float PROCESS_A_P1(){
   clock_t Start,End;
   Start=clock();
@@ -38,56 +70,6 @@ float PROCESS_A_P1(){
     sched_setscheduler(pid2, SCHED_OTHER,&param);
     execlp("make","make",NULL);
   }waitpid(pid2,&status,0);
-  End=clock();
-  float total_time=(float)(End-Start);
-  return total_time;
-}
-
-float PROCESS_A_P2(){
-  clock_t Start,End;
-  Start=clock();
-  pid3=fork();
-  if(pid3==-1){
-    printf("Unable to create Child Process\n");
-  }
-  else if(pid3==0){
-    param.sched_priority=2;
-    sched_setscheduler(pid3, SCHED_OTHER,&param);
-    execlp("make","make",NULL);
-  }waitpid(pid3,&status,0);
-  End=clock();
-  float total_time=(float)(End-Start);
-  return total_time;
-}
-
-float PROCESS_A_P3(){
-  clock_t Start,End;
-  Start=clock();
-  pid4=fork();
-  if(pid4==-1){
-    printf("Unable to create Child Process\n");
-  }
-  else if(pid4==0){
-    param.sched_priority=3;
-    sched_setscheduler(pid4, SCHED_OTHER,&param);
-    execlp("make","make",NULL);
-  }waitpid(pid4,&status,0);
-  End=clock();
-  float total_time=(float)(End-Start);
-  return total_time;
-}
-
-float PROCESS_B(){
-  clock_t Start,End;
-  Start=clock();
-  pid5=fork();
-  if(pid5==-1){
-    printf("Unable to create Child Process\n");
-  }
-  else if(pid5==0){
-    sched_setscheduler(pid5, SCHED_RR,&param);
-    execlp("make","make",NULL);
-  }waitpid(pid5,&status,0);
   End=clock();
   float total_time=(float)(End-Start);
   return total_time;
@@ -110,57 +92,6 @@ float PROCESS_B_P1(){
   return total_time;
 }
 
-float PROCESS_B_P2(){
-  clock_t Start,End;
-  Start=clock();
-  pid7=fork();
-  if(pid7==-1){
-    printf("Unable to create Child Process\n");
-  }
-  else if(pid7==0){
-    param.sched_priority=2;
-    sched_setscheduler(pid7, SCHED_RR,&param);
-    execlp("make","make",NULL);
-  }waitpid(pid7,&status,0);
-  End=clock();
-  float total_time=(float)(End-Start);
-  return total_time;
-}
-
-float PROCESS_B_P3(){
-  clock_t Start,End;
-  Start=clock();
-  pid8=fork();
-  if(pid8==-1){
-    printf("Unable to create Child Process\n");
-  }
-  else if(pid8==0){
-    param.sched_priority=3;
-    sched_setscheduler(pid8, SCHED_RR,&param);
-    execlp("make","make",NULL);
-  }waitpid(pid8,&status,0);
-  End=clock();
-  float total_time=(float)(End-Start);
-  return total_time;
-}
-
-
-float PROCESS_C(){
-  clock_t Start,End;
-  Start=clock();
-  pid9=fork();
-  if(pid9==-1){
-    printf("Unable to create Child Process\n");
-  }
-  else if(pid9==0){
-    sched_setscheduler(pid9, SCHED_FIFO,&param);
-    execlp("make","make",NULL);
-  }waitpid(pid9,&status,0);
-  End=clock();
-  float total_time=(float)(End-Start);
-  return total_time;
-}
-
 float PROCESS_C_P1(){
   clock_t Start,End;
   Start=clock();
@@ -173,6 +104,40 @@ float PROCESS_C_P1(){
     sched_setscheduler(pid10, SCHED_FIFO,&param);
     execlp("make","make",NULL);
   }waitpid(pid10,&status,0);
+  End=clock();
+  float total_time=(float)(End-Start);
+  return total_time;
+}
+
+float PROCESS_A_P2(){
+  clock_t Start,End;
+  Start=clock();
+  pid3=fork();
+  if(pid3==-1){
+    printf("Unable to create Child Process\n");
+  }
+  else if(pid3==0){
+    param.sched_priority=2;
+    sched_setscheduler(pid3, SCHED_OTHER,&param);
+    execlp("make","make",NULL);
+  }waitpid(pid3,&status,0);
+  End=clock();
+  float total_time=(float)(End-Start);
+  return total_time;
+}
+
+float PROCESS_B_P2(){
+  clock_t Start,End;
+  Start=clock();
+  pid7=fork();
+  if(pid7==-1){
+    printf("Unable to create Child Process\n");
+  }
+  else if(pid7==0){
+    param.sched_priority=2;
+    sched_setscheduler(pid7, SCHED_RR,&param);
+    execlp("make","make",NULL);
+  }waitpid(pid7,&status,0);
   End=clock();
   float total_time=(float)(End-Start);
   return total_time;
@@ -195,6 +160,40 @@ float PROCESS_C_P2(){
   return total_time;
 }
 
+float PROCESS_A_P3(){
+  clock_t Start,End;
+  Start=clock();
+  pid4=fork();
+  if(pid4==-1){
+    printf("Unable to create Child Process\n");
+  }
+  else if(pid4==0){
+    param.sched_priority=3;
+    sched_setscheduler(pid4, SCHED_OTHER,&param);
+    execlp("make","make",NULL);
+  }waitpid(pid4,&status,0);
+  End=clock();
+  float total_time=(float)(End-Start);
+  return total_time;
+}
+
+float PROCESS_B_P3(){
+  clock_t Start,End;
+  Start=clock();
+  pid8=fork();
+  if(pid8==-1){
+    printf("Unable to create Child Process\n");
+  }
+  else if(pid8==0){
+    param.sched_priority=3;
+    sched_setscheduler(pid8, SCHED_RR,&param);
+    execlp("make","make",NULL);
+  }waitpid(pid8,&status,0);
+  End=clock();
+  float total_time=(float)(End-Start);
+  return total_time;
+}
+
 float PROCESS_C_P3(){
   clock_t Start,End;
   Start=clock();
@@ -211,8 +210,6 @@ float PROCESS_C_P3(){
   float total_time=(float)(End-Start);
   return total_time;
 }
-
-
 
 int main(){
     
