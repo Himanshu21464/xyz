@@ -215,33 +215,26 @@ float PROCESS_C_P3(){
 
 
 int main(){
-  float T1=PROCESS_A();
-  float T2=PROCESS_A_P1();
-  float T3=PROCESS_A_P2();
-  float T4=PROCESS_A_P3();
-  float T5=PROCESS_B();
-  float T6=PROCESS_B_P1();
-  float T7=PROCESS_B_P2();
-  float T8=PROCESS_B_P3();
-  float T9=PROCESS_C();
-  float T10=PROCESS_C_P1();
-  float T11=PROCESS_C_P2();
-  float T12=PROCESS_C_P3();
-  
-
+    
   ////////////////////////////////////////////////////////////////////
+  float T1=PROCESS_A();
   printf("\n\nPROCESS-A DEFAULT:");
   for(int i=0;i<T1;i++){
     printf("#");
   }
   printf(" %f\n",T1);
 
+
+
+  float T5=PROCESS_B();
   printf("PROCESS-B DEFAULT:");
   for(int i=0;i<T5;i++){
     printf("#");
   }
   printf(" %f\n",T5);
 
+
+  float T9=PROCESS_C();
   printf("PROCESS-C DEFAULT:");
   for(int i=0;i<T9;i++){
     printf("#");
@@ -249,18 +242,23 @@ int main(){
   printf(" %f\n",T9);
   //////////////////////////////////////////////////////////////////////
 
+  float T2=PROCESS_A_P1();
   printf("PROCESS-A PRIORITY-1:");
   for(int i=0;i<T2;i++){
     printf("#");
   }
   printf(" %f\n",T2);
 
+
+  float T6=PROCESS_B_P1();
   printf("PROCESS-B PRIORITY-1:");
   for(int i=0;i<T6;i++){
     printf("#");
   }
   printf(" %f\n",T6);
 
+
+  float T10=PROCESS_C_P1();
   printf("PROCESS-C PRIORITY-1:");
   for(int i=0;i<T10;i++){
     printf("#");
@@ -268,12 +266,15 @@ int main(){
   printf(" %f\n",T10);
 
 /////////////////////////////////////////////////////////////////////
+  float T3=PROCESS_A_P2();
   printf("PROCESS-A PRIORITY-2:");
   for(int i=0;i<T3;i++){
     printf("#");
   }
   printf(" %f\n",T3);
 
+
+  float T7=PROCESS_B_P2();
   printf("PROCESS-B PRIORITY-2:");
   for(int i=0;i<T7;i++){
     printf("#");
@@ -281,6 +282,7 @@ int main(){
   printf(" %f\n",T7);
 
 
+  float T11=PROCESS_C_P2();
   printf("PROCESS-C PRIORITY-2:");
   for(int i=0;i<T11;i++){
     printf("#");
@@ -289,18 +291,23 @@ int main(){
 
 
 //////////////////////////////////////////////////////////////////////
+
+  float T4=PROCESS_A_P3();
   printf("PROCESS-A PRIORITY-3:");
   for(int i=0;i<T4;i++){
     printf("#");
   }
   printf(" %f\n",T4);
 
+
+  float T8=PROCESS_B_P3();
   printf("PROCESS-B PRIORITY-3:");
   for(int i=0;i<T8;i++){
     printf("#");
   }
   printf(" %f\n",T8);
   
+  float T12=PROCESS_C_P3();
   printf("PROCESS-C PRIORITY-3:");
   for(int i=0;i<T12;i++){
     printf("#");
