@@ -5,6 +5,8 @@
 #include <linux/fs.h>
 #include "syscall_module.h"
 
+
+MODULE_LICENCE("GPL");
 long syscall_module_syscall(int pid) {
     struct task_struct *task;
     struct path *path;
@@ -42,4 +44,3 @@ long syscall_module_syscall(int pid) {
 
     return 0;
 }
-MODULE_LICENCE("GPL);
