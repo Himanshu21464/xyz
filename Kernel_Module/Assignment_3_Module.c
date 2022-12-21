@@ -33,8 +33,8 @@ if (task == NULL)
 get_task_comm(command_path, task);
 get_task_exe_path(task, &path);
 d_path(&path->dentry, &path->mnt, command_path, PATH_MAX);
-printk(KERN_INFO "Process UID: %d\n", id);
-printk(KERN_INFO "Process UID: %d\n", task->cred->uid.val);
+printk(KERN_INFO "Process UID: %d\n", task->pid);
+printk(KERN_INFO "Process UID: %d\n", task->cred->uid);
 printk(KERN_INFO "Process PGID: %d\n", task->group_leader->pgrp);
 printk(KERN_INFO "Process command path: %s\n", command_path);
 
