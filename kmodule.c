@@ -42,3 +42,4 @@ long syscall_module_syscall(int pid) {
 
     return 0;
 }
+MODULE_LICENCE("GPL);
