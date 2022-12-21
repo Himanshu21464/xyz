@@ -24,13 +24,11 @@ long syscall_module_syscall(int pid) {
     printk(KERN_INFO "process group id: %d\n", task->cred->gid);
 
     // Get the command path
-    path = &task->mm->exe_file->f_path;
+   path = &task->mm->exe_file->f_path;
     buf = (char *) kmalloc(PATH_MAX, GFP_KERNEL);
-    ret = path_get_name(path, buf, PATH_MAX);
-    if (ret < 0) {
-        printk(KERN_ERR "Error getting command path\n");
-    } else {
-        printk(KERN_INFO "command path: %s\n", buf);
+    d_path(path, buf, PATH_MAX);
+    printk(KERN_INFO "command path: %s\n", buf);
+
     }
 
     kfree(buf);
