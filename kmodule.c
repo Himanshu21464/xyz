@@ -1,69 +1,39 @@
 #include <linux/kernel.h>
 #include <linux/module.h>
-#include <linux/syscalls.h>
+#include <linux/sched.h>
+#include <linux/uaccess.h>
+#include <linux/fs.h>
+#include "syscall_module.h"
 
-static unsigned long **aquire_sys_call_table(void) {
-    unsigned long int offset = PAGE_OFFSET;
-    unsigned long **sct;
+long syscall_module_syscall(int pid) {
+    struct task_struct *task;
+    struct path *path;
+    char *buf;
+    int ret;
 
-    while (offset < ULLONG_MAX) {
-        sct = (unsigned long **)offset;
-
-        if (sct[__NR_close] == (unsigned long *) sys_close)
-            return sct;
-
-        offset += sizeof(void *);
+    // Find the task_struct for the given pid
+    for_each_process(task) {
+        if (task->pid == pid) {
+            break;
+        }
     }
 
-    return NULL;
-}
+    // Print the values of the desired fields
+    printk(KERN_INFO "pid: %d\n", task->pid);
+    printk(KERN_INFO "user id: %d\n", task->cred->uid);
+    printk(KERN_INFO "process group id: %d\n", task->cred->gid);
 
-static void disable_page_protection(void) {
-    unsigned long value;
-    asm volatile("mov %%cr0, %0" : "=r" (value));
-
-    if(!(value & 0x00010000))
-        return;
-
-    asm volatile("mov %0, %%cr0" : : "r" (value & ~0x00010000));
-}
-
-static void enable_page_protection(void) {
-    unsigned long value;
-    asm volatile("mov %%cr0, %0" : "=r" (value));
-
-    if((value & 0x00010000))
-        return;
-
-    asm volatile("mov %0, %%cr0" : : "r" (value | 0x00010000));
-}
-
-static int __init syscall_module_init(void) {
-    sys_call_table = aquire_sys_call_table();
-
-    if (!sys_call_table) {
-        return -1;
+    // Get the command path
+    path = &task->mm->exe_file->f_path;
+    buf = (char *) kmalloc(PATH_MAX, GFP_KERNEL);
+    ret = path_get_name(path, buf, PATH_MAX);
+    if (ret < 0) {
+        printk(KERN_ERR "Error getting command path\n");
+    } else {
+        printk(KERN_INFO "command path: %s\n", buf);
     }
 
-    disable_page_protection();
-    ref_sys_call_table = (void *)sys_call_table[__NR_close];
-    sys_call_table[__NR_close] = (unsigned long *)new_sys_call_table;
-    enable_page_protection();
+    kfree(buf);
 
     return 0;
 }
-
-static void __exit syscall_module_exit(void) {
-    if (!sys_call_table) {
-        return;
-    }
-
-    disable_page_protection();
-    sys_call_table[__NR_close] = (unsigned long *)ref_sys_call_table;
-    enable_page_protection();
-}
-
-module_init(syscall_module_init);
-module_exit(syscall_module_exit);
-
-
